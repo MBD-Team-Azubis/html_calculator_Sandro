@@ -21,22 +21,23 @@ let a = "";
 function Meth(string: string) {
   console.log(string);
   if (string.includes("(") && string.includes(")")) {
-    let first = string.indexOf("(");
-    let last = string.lastIndexOf(")");
-    let replace = string.slice(first, last + 1);
-    let substring = string
-      .slice(first, last + 1)
-      .replace("(", "")
-      .replace(/\)(?=[^.]*$)/, "");
-    console.log(replace);
-    substring = <string>Meth(substring);
-    console.log(substring, 1);
-    string = string.replace(replace, substring);
-    console.log(string, 2);
-    numberarr = [];
-    operatorarr = [];
-    a = "";
-    // input = "";
+    while (string.includes("(") && string.includes(")")) {
+      let first = string.lastIndexOf("(");
+      let last = string.indexOf(")");
+      let replace = string.slice(first, last + 1);
+      let substring = string
+        .slice(first, last + 1)
+        .replace("(", "")
+        .replace(/\)(?=[^.]*$)/, "");
+      console.log(replace);
+      substring = <string>Meth(substring);
+      console.log(substring, 1);
+      string = string.replace(replace, substring);
+      console.log(string, 2);
+      numberarr = [];
+      operatorarr = [];
+      a = "";
+    }
   }
   for (let i = 0; i < string.length; i++) {
     if (
